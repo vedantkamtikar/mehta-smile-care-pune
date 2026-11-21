@@ -16,6 +16,7 @@ import {
   ShieldCheck,
   Smile,
   Sparkles,
+  Star,
   X,
 } from "lucide-react";
 
@@ -49,6 +50,27 @@ const navigation = [
   { label: "Gallery", href: "#gallery" },
   { label: "Reviews", href: "#reviews" },
   { label: "Contact", href: "#visit" },
+];
+
+const patientReviews = [
+  {
+    initial: "R",
+    name: "Rashmi Mantri",
+    treatment: "Dental Implant Procedure",
+    text: "The doctor is very good in explaining the whole process of implant and also did the implant very calmly and smoothly, checking if I am comfortable every few minutes. They do great updates and follow-ups before and after the procedure.",
+  },
+  {
+    initial: "V",
+    name: "Verified Patient",
+    treatment: "Family & Senior Dental Care",
+    text: "Dr. Ripple Mehta was very genial and patient. She explained everything clearly and made both me and my 82-year-old mom feel at ease about her treatment.",
+  },
+  {
+    initial: "V",
+    name: "Verified Patient",
+    treatment: "Consultation & Orthodontics",
+    text: "Dr. Ripple Mehta was attentive and dedicated, making a great first impression. The doctor explained things well. I was very satisfied with the wait time, staff behavior, and overall value for money.",
+  },
 ];
 
 function PhotoPlaceholder({
@@ -367,22 +389,53 @@ function HomePage() {
         </section>
 
         <section className="reviews section-wrap" id="reviews" aria-labelledby="reviews-heading">
-          <div className="reviews__top">
+          <div className="section-topline">
             <SectionHeading
-              eyebrow="Patient Testimonials"
-              title="What Our Patients Say"
-              description="Verified feedback and testimonials from patients who receive care at our clinic."
+              eyebrow="Patient Feedback"
+              title="Verified Patient Experiences"
+              description="Real testimonials from patients treated for dental implants, orthodontics, and comprehensive oral care at our clinic."
               id="reviews-heading"
             />
-            <div className="reviews__placeholder-note">
-              <span className="reviews__quote-mark">“</span>
-              <p>Patient reviews and clinical testimonials will be published shortly.</p>
-              <span className="reviews__source">VERIFIED PATIENT REVIEWS</span>
+            <div className="reviews-summary-badge">
+              <div className="flex items-center gap-1 text-amber-500">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-amber-500" aria-hidden="true" />
+                ))}
+              </div>
+              <span className="text-xs font-semibold text-foreground">5.0 Star Patient Rating</span>
             </div>
           </div>
+
+          <div className="reviews-grid">
+            {patientReviews.map((review, idx) => (
+              <article className="review-card" key={idx}>
+                <div className="review-card__stars" aria-label="5 out of 5 stars">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} aria-hidden="true" />
+                  ))}
+                </div>
+                <p className="review-card__text">“{review.text}”</p>
+                <div className="review-card__footer">
+                  <div className="review-card__avatar">{review.initial}</div>
+                  <div className="review-card__info">
+                    <span className="review-card__name">{review.name}</span>
+                    <span className="review-card__meta">{review.treatment}</span>
+                    <span className="review-card__badge">
+                      <ShieldCheck className="w-3 h-3" aria-hidden="true" />
+                      Verified Patient
+                    </span>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
           <div className="reviews__bottom">
-            <span><MessageCircle aria-hidden="true" /> Patient reviews and ratings updating soon.</span>
-            <a className="text-link" href="#visit">Have questions? Inquire today <ArrowRight aria-hidden="true" /></a>
+            <span>
+              <Check className="w-4 h-4 text-emerald-600" aria-hidden="true" />
+              100% Recommended by verified patients for gentle treatment, clarity, and follow-up care.
+            </span>
+            <a className="text-link" href="#visit">Schedule your visit <ArrowRight aria-hidden="true" /></a>
           </div>
         </section>
 
