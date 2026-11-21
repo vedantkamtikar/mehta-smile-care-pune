@@ -84,12 +84,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Dr. Mehta’s Dental Care & Cure | Pune" },
       {
         name: "description",
-        content: "Gentle dental and orthodontic care on Baner-Pashan Link Road, Pune.",
+        content: "Professional dental and orthodontic care on Baner-Pashan Link Road, Pune.",
       },
       { property: "og:title", content: "Dr. Mehta’s Dental Care & Cure" },
       {
         property: "og:description",
-        content: "Gentle dental and orthodontic care on Baner-Pashan Link Road, Pune.",
+        content: "Professional dental and orthodontic care on Baner-Pashan Link Road, Pune.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

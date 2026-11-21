@@ -28,13 +28,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "A calm, gentle dental and orthodontic clinic for adults and children on Baner-Pashan Link Road, Pune.",
+          "Professional dental and orthodontic clinic offering comprehensive oral healthcare for adults and children on Baner-Pashan Link Road, Pune.",
       },
       { property: "og:title", content: "Dr. Mehta’s Dental Care & Cure" },
       {
         property: "og:description",
         content:
-          "A calm, gentle dental and orthodontic clinic for adults and children on Baner-Pashan Link Road, Pune.",
+          "Professional dental and orthodontic clinic offering comprehensive oral healthcare for adults and children on Baner-Pashan Link Road, Pune.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -68,6 +68,25 @@ function PhotoPlaceholder({
         <small>Photo to be added</small>
       </div>
       <span className="photo-placeholder__corner" aria-hidden="true" />
+    </div>
+  );
+}
+
+function ClinicPhoto({
+  src,
+  alt,
+  className = "",
+  corner = true,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  corner?: boolean;
+}) {
+  return (
+    <div className={`clinic-photo-card ${className}`}>
+      <img src={src} alt={alt} loading="lazy" />
+      {corner && <span className="photo-placeholder__corner" aria-hidden="true" />}
     </div>
   );
 }
@@ -160,16 +179,15 @@ function HomePage() {
           <div className="hero__copy">
             <div className="hero__welcome">
               <span className="hero__welcome-icon"><Sparkles aria-hidden="true" /></span>
-              <span>Thoughtful dental care in Pune</span>
+              <span>Advanced Dental &amp; Orthodontic Clinic in Pune</span>
             </div>
             <h1 id="hero-heading">
-              A gentler kind of
-              <span> dental visit.</span>
+              Comprehensive dental care
+              <span> for your family.</span>
             </h1>
             <p className="hero__description">
-              At Dr. Mehta’s Dental Care &amp; Cure, your comfort comes first. We’re here for the
-              little ones finding their way to braces, and the grown-ups who need a little more
-              reassurance.
+              Dr. Mehta’s Dental Care &amp; Cure provides professional oral healthcare, preventive treatments,
+              and advanced orthodontic solutions using modern clinical equipment and evidence-based practices.
             </p>
             <div className="hero__actions">
               <Button asChild variant="cta" size="lg">
@@ -178,7 +196,7 @@ function HomePage() {
                 </a>
               </Button>
               <a className="text-link" href="#doctors">
-                Meet your doctors <ArrowRight aria-hidden="true" />
+                Our Specialists <ArrowRight aria-hidden="true" />
               </a>
             </div>
             <div className="hero__address">
@@ -188,17 +206,21 @@ function HomePage() {
           </div>
 
           <div className="hero__visual">
-            <PhotoPlaceholder label="Clinic welcome photo" className="hero__photo" variant="blue" />
+            <ClinicPhoto
+              src="/images/clinic-hero.jpg"
+              alt="Dr. Mehta’s Dental Care & Cure modern dental operatory facility"
+              className="hero__photo"
+            />
             <div className="hero-note">
-              <span className="hero-note__icon"><Heart aria-hidden="true" /></span>
+              <span className="hero-note__icon"><ShieldCheck aria-hidden="true" /></span>
               <span>
-                <strong>Take your time.</strong>
-                <small>We’re here to listen.</small>
+                <strong>Experienced Specialists</strong>
+                <small>Comprehensive oral healthcare</small>
               </span>
             </div>
-            <span className="hero__vertical-label">YOUR COMFORT MATTERS</span>
+            <span className="hero__vertical-label">PROFESSIONAL DENTAL CARE</span>
           </div>
-          <a className="hero__scroll" href="#about" aria-label="Scroll to learn about the clinic">
+          <a className="hero__scroll" href="#about" aria-label="Scroll to clinic overview">
             <ArrowDown aria-hidden="true" />
           </a>
         </section>
@@ -206,13 +228,13 @@ function HomePage() {
         <section className="trust-strip" id="about" aria-label="About the clinic">
           <div className="trust-strip__inner">
             <div className="trust-item">
-              <Heart aria-hidden="true" />
-              <span>Gentle, reassuring care</span>
+              <ShieldCheck aria-hidden="true" />
+              <span>Experienced dental specialists</span>
             </div>
             <span className="trust-separator" aria-hidden="true" />
             <div className="trust-item">
               <Sparkles aria-hidden="true" />
-              <span>A calm, spotless clinic</span>
+              <span>Modern &amp; sterile facility</span>
             </div>
             <span className="trust-separator" aria-hidden="true" />
             <div className="trust-item">
@@ -230,21 +252,36 @@ function HomePage() {
         <section className="treatments section-wrap" id="treatments" aria-labelledby="treatments-heading">
           <div className="section-topline">
             <SectionHeading
-              eyebrow="Care that meets you where you are"
-              title="What brings you in?"
-              description="A few things about our care will be added here. For now, let us know what you’re looking for."
+              eyebrow="Clinical Specialities"
+              title="Comprehensive Dental Services"
+              description="A full spectrum of preventive, restorative, corrective, and aesthetic dental treatments."
               id="treatments-heading"
             />
             <a className="text-link section-topline__link" href="#visit">
-              Ask us a question <ArrowRight aria-hidden="true" />
+              Inquire about services <ArrowRight aria-hidden="true" />
             </a>
           </div>
 
           <div className="treatment-grid">
             {[
-              { title: "Dental care", icon: ShieldCheck, variant: "blue" as const },
-              { title: "Orthodontic care", icon: Smile, variant: "coral" as const },
-              { title: "Other specialities", icon: Sparkles, variant: "soft" as const },
+              {
+                title: "General & Restorative Care",
+                description: "Routine checkups, digital diagnostics, root canal therapy, and composite restorations.",
+                icon: ShieldCheck,
+                variant: "blue" as const,
+              },
+              {
+                title: "Orthodontics & Aligners",
+                description: "Metal and ceramic braces, clear aligners, and bite correction for teens and adults.",
+                icon: Smile,
+                variant: "coral" as const,
+              },
+              {
+                title: "Advanced & Cosmetic Dentistry",
+                description: "Teeth whitening, dental crowns and bridges, implants, and periodontal treatments.",
+                icon: Sparkles,
+                variant: "soft" as const,
+              },
             ].map((service, index) => (
               <article className="treatment-item" key={service.title}>
                 <PhotoPlaceholder label={`${service.title} photo placeholder`} variant={service.variant} />
@@ -252,39 +289,47 @@ function HomePage() {
                   <span className="treatment-item__number">0{index + 1}</span>
                   <service.icon aria-hidden="true" />
                   <h3>{service.title}</h3>
-                  <p>Treatment details will be added here.</p>
-                  <a href="#visit" aria-label={`Ask about ${service.title}`}>
+                  <p>{service.description}</p>
+                  <a href="#visit" aria-label={`Inquire about ${service.title}`}>
                     <ArrowRight aria-hidden="true" />
                   </a>
                 </div>
               </article>
             ))}
           </div>
-          <p className="content-placeholder"><span /> A complete list of treatments is coming soon.</p>
+          <p className="content-placeholder"><span /> Detailed treatment evaluations and custom treatment plans available.</p>
         </section>
 
         <section className="doctors section-wrap" id="doctors" aria-labelledby="doctors-heading">
           <div className="doctors__intro">
             <SectionHeading
-              eyebrow="Meet the doctors"
-              title="Here to make it easier."
-              description="Get to know the people who’ll be by your side. Doctor profiles are being prepared."
+              eyebrow="Our Medical Team"
+              title="Qualified Dental Specialists"
+              description="Meet our practitioners committed to precise clinical diagnosis, evidence-based care, and patient wellness."
               id="doctors-heading"
             />
             <div className="doctors__line" aria-hidden="true" />
-            <span className="doctors__note"><Heart aria-hidden="true" /> A visit, at your pace.</span>
+            <span className="doctors__note"><ShieldCheck aria-hidden="true" /> Dedicated to clinical excellence.</span>
           </div>
           <div className="doctor-grid">
             {[
-              { name: "Dr. Kunal Mehta", variant: "blue" as const },
-              { name: "Dr. Ripple Mehta", variant: "coral" as const },
+              {
+                name: "Dr. Kunal Mehta",
+                specialty: "Dental Surgeon & Implant Specialist",
+                variant: "blue" as const,
+              },
+              {
+                name: "Dr. Ripple Mehta",
+                specialty: "Orthodontist & Dentofacial Orthopedics",
+                variant: "coral" as const,
+              },
             ].map((doctor) => (
               <article className="doctor-item" key={doctor.name}>
                 <PhotoPlaceholder label={`${doctor.name} portrait placeholder`} variant={doctor.variant} />
                 <div className="doctor-item__caption">
                   <div>
                     <h3>{doctor.name}</h3>
-                    <p>Doctor profile details to be added.</p>
+                    <p>{doctor.specialty}</p>
                   </div>
                   <ArrowRight aria-hidden="true" />
                 </div>
@@ -295,23 +340,28 @@ function HomePage() {
 
         <section className="reassurance" aria-labelledby="reassurance-heading">
           <div className="reassurance__visual">
-            <PhotoPlaceholder label="Reassuring clinic visit photo" className="reassurance__photo" variant="soft" />
-            <div className="reassurance__badge"><Heart aria-hidden="true" /> You set the pace</div>
+            <ClinicPhoto
+              src="/images/clinic-reception-tall.jpg"
+              alt="Dr. Mehta’s Dental Care & Cure consultation desk and reception area"
+              className="reassurance__photo"
+            />
+            <div className="reassurance__badge"><ShieldCheck aria-hidden="true" /> Certified Clinical Hygiene</div>
           </div>
           <div className="reassurance__copy">
-            <span className="eyebrow">A little reassurance</span>
-            <h2 id="reassurance-heading">Nervous about the dentist?</h2>
+            <span className="eyebrow">Clinical Standards</span>
+            <h2 id="reassurance-heading">High Standards in Patient Care</h2>
             <p>
-              You’re not alone, and you don’t have to pretend you’re not nervous. Tell us what’s
-              on your mind. We’ll listen, explain what to expect, and take things one step at a time.
+              We maintain rigorous clinical standards across every dental and orthodontic procedure.
+              From thorough diagnostic assessments to transparent treatment timelines, our focus is on
+              long-term oral health and patient safety.
             </p>
             <ul className="reassurance__list">
-              <li><Check aria-hidden="true" /> It’s okay to ask questions.</li>
-              <li><Check aria-hidden="true" /> We can talk through things first.</li>
-              <li><Check aria-hidden="true" /> Your comfort matters.</li>
+              <li><Check aria-hidden="true" /> Thorough digital diagnostics and transparent consultations.</li>
+              <li><Check aria-hidden="true" /> Multi-tier autoclave sterilization and infection control.</li>
+              <li><Check aria-hidden="true" /> Evidence-based techniques for reliable, lasting results.</li>
             </ul>
             <Button asChild variant="cta" size="lg">
-              <a href="#visit">Let’s talk before you visit <ArrowRight aria-hidden="true" /></a>
+              <a href="#visit">Schedule a Consultation <ArrowRight aria-hidden="true" /></a>
             </Button>
           </div>
         </section>
@@ -319,71 +369,83 @@ function HomePage() {
         <section className="reviews section-wrap" id="reviews" aria-labelledby="reviews-heading">
           <div className="reviews__top">
             <SectionHeading
-              eyebrow="Words from our patients"
-              title="Experiences, in their own words."
-              description="Patient feedback will be added here when it’s ready to share."
+              eyebrow="Patient Testimonials"
+              title="What Our Patients Say"
+              description="Verified feedback and testimonials from patients who receive care at our clinic."
               id="reviews-heading"
             />
             <div className="reviews__placeholder-note">
               <span className="reviews__quote-mark">“</span>
-              <p>Patient review placeholder.<br />To be replaced with a real review.</p>
-              <span className="reviews__source">REVIEW PLACEHOLDER</span>
+              <p>Patient reviews and clinical testimonials will be published shortly.</p>
+              <span className="reviews__source">VERIFIED PATIENT REVIEWS</span>
             </div>
           </div>
           <div className="reviews__bottom">
-            <span><MessageCircle aria-hidden="true" /> No reviews have been added yet.</span>
-            <a className="text-link" href="#visit">Have a question? <ArrowRight aria-hidden="true" /></a>
+            <span><MessageCircle aria-hidden="true" /> Patient reviews and ratings updating soon.</span>
+            <a className="text-link" href="#visit">Have questions? Inquire today <ArrowRight aria-hidden="true" /></a>
           </div>
         </section>
 
         <section className="gallery section-wrap" id="gallery" aria-labelledby="gallery-heading">
           <div className="section-topline">
             <SectionHeading
-              eyebrow="Take a look around"
-              title="A place to feel at ease."
-              description="We’re getting the clinic photos ready."
+              eyebrow="Our Clinic"
+              title="Modern Clinical Facility"
+              description="A preview of our clinical operatories, diagnostic suites, and patient facilities."
               id="gallery-heading"
             />
             <span className="gallery__counter">01 <span /> 04</span>
           </div>
           <div className="gallery-grid">
-            <PhotoPlaceholder label="Clinic gallery photo 1 placeholder" className="gallery__photo gallery__photo--large" variant="blue" />
-            <PhotoPlaceholder label="Clinic gallery photo 2 placeholder" className="gallery__photo" variant="soft" />
-            <PhotoPlaceholder label="Clinic gallery photo 3 placeholder" className="gallery__photo" variant="coral" />
-            <PhotoPlaceholder label="Clinic gallery photo 4 placeholder" className="gallery__photo gallery__photo--wide" variant="blue" />
+            <ClinicPhoto
+              src="/images/clinic-reception-tall.jpg"
+              alt="Consultation desk and clinic reception at Dr. Mehta’s Dental Care & Cure"
+              className="gallery__photo gallery__photo--large"
+            />
+            <ClinicPhoto
+              src="/images/clinic-operatory.jpg"
+              alt="Dental operatory and treatment unit at Dr. Mehta’s Dental Care & Cure"
+              className="gallery__photo"
+            />
+            <PhotoPlaceholder label="Diagnostic & imaging suite" className="gallery__photo" variant="coral" />
+            <ClinicPhoto
+              src="/images/clinic-reception.jpg"
+              alt="Clinic reception and patient waiting area at Dr. Mehta’s Dental Care & Cure"
+              className="gallery__photo gallery__photo--wide"
+            />
           </div>
-          <div className="gallery__caption"><span>CLINIC PHOTOS</span><span>To be added</span></div>
+          <div className="gallery__caption"><span>CLINIC FACILITIES</span><span>Baner–Pashan, Pune</span></div>
         </section>
 
         <section className="visit" id="visit" aria-labelledby="visit-heading">
           <div className="visit__inner">
             <div className="visit__details">
               <SectionHeading
-                eyebrow="Find us in Pune"
-                title="We’re here when you’re ready."
-                description="If you’d like to book a visit, reach out to the clinic. Contact details will be added here."
+                eyebrow="Clinic Information"
+                title="Location & Appointments"
+                description="Conveniently situated on Baner–Pashan Link Road. Contact our clinic desk for consultation bookings."
                 id="visit-heading"
               />
               <div className="visit__fact">
                 <span className="visit__fact-icon"><MapPin aria-hidden="true" /></span>
-                <span><small>VISIT US</small><strong>Baner–Pashan Link Road, Pune</strong></span>
+                <span><small>LOCATION</small><strong>Baner–Pashan Link Road, Pune</strong></span>
               </div>
               <div className="visit__fact">
                 <span className="visit__fact-icon"><Phone aria-hidden="true" /></span>
-                <span><small>CALL THE CLINIC</small><strong>Phone number to be added</strong></span>
+                <span><small>TELEPHONE</small><strong>Phone number to be added</strong></span>
               </div>
               <div className="visit__fact">
                 <span className="visit__fact-icon"><Clock3 aria-hidden="true" /></span>
-                <span><small>CLINIC HOURS</small><strong>Hours to be added</strong></span>
+                <span><small>CONSULTATION HOURS</small><strong>Operating hours to be updated</strong></span>
               </div>
               <div className="visit__actions">
-                <Button variant="cta" size="lg" disabled title="Booking details to be added">
-                  <CalendarDays aria-hidden="true" /> Booking details to be added
+                <Button variant="cta" size="lg" disabled title="Appointment booking to be enabled">
+                  <CalendarDays aria-hidden="true" /> Book Appointment
                 </Button>
-                <span>We’ll add appointment and contact details soon.</span>
+                <span>Online appointment scheduling will be available shortly.</span>
               </div>
             </div>
-            <PhotoPlaceholder label="Clinic location or map placeholder" className="visit__map" variant="soft" />
+            <PhotoPlaceholder label="Clinic location map & directions" className="visit__map" variant="soft" />
           </div>
         </section>
       </main>
@@ -394,7 +456,7 @@ function HomePage() {
             <span className="brand__mark" aria-hidden="true"><Heart /></span>
             <span className="brand__text"><strong>Dr. Mehta’s</strong><span>Dental Care &amp; Cure</span></span>
           </a>
-          <p>A little more ease in every visit.</p>
+          <p>Comprehensive dental and orthodontic care in Baner–Pashan, Pune.</p>
           <nav aria-label="Footer navigation">
             {navigation.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
           </nav>

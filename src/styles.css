@@ -156,7 +156,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .photo-placeholder__frame svg { width: 22px; height: 22px; stroke-width: 1.6; }
 .photo-placeholder__frame span { font-size: 12px; font-weight: 600; }
 .photo-placeholder__frame small { color: var(--muted-foreground); font-size: 10px; }
-.photo-placeholder__corner { position: absolute; top: 11px; right: 11px; width: 23px; height: 23px; border-top: 1px solid color-mix(in oklab, var(--cta) 70%, transparent); border-right: 1px solid color-mix(in oklab, var(--cta) 70%, transparent); }
+.photo-placeholder__corner { position: absolute; top: 11px; right: 11px; width: 23px; height: 23px; border-top: 1px solid color-mix(in oklab, var(--cta) 70%, transparent); border-right: 1px solid color-mix(in oklab, var(--cta) 70%, transparent); pointer-events: none; }
+.clinic-photo-card { position: relative; display: block; overflow: hidden; border: 1px solid color-mix(in oklab, var(--primary) 14%, transparent); border-radius: 5px; background: var(--paper); box-shadow: var(--shadow-soft); }
+.clinic-photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .hero__photo { min-height: 430px; }
 .hero__photo .photo-placeholder__frame { min-height: 340px; }
 .hero-note { position: absolute; right: 0; bottom: 4px; display: flex; min-width: 224px; align-items: center; gap: 12px; padding: 15px 18px; border: 1px solid var(--border); border-radius: 5px; background: var(--card); box-shadow: var(--shadow-soft); }
