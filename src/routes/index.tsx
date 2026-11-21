@@ -201,7 +201,7 @@ function HomePage() {
             </div>
             <div className="hero__address">
               <MapPin aria-hidden="true" />
-              <span>Baner–Pashan Link Road, Pune</span>
+              <span>402, 18 High Street, Baner–Pashan Link Road, Pune</span>
             </div>
           </div>
 
@@ -244,7 +244,7 @@ function HomePage() {
             <span className="trust-separator" aria-hidden="true" />
             <div className="trust-item">
               <MapPin aria-hidden="true" />
-              <span>Baner–Pashan, Pune</span>
+              <span>18 High Street, Baner–Pashan</span>
             </div>
           </div>
         </section>
@@ -423,12 +423,16 @@ function HomePage() {
               <SectionHeading
                 eyebrow="Clinic Information"
                 title="Location & Appointments"
-                description="Conveniently situated on Baner–Pashan Link Road. Contact our clinic desk for consultation bookings."
+                description="Conveniently situated at 402, 18 High Street, Baner–Pashan Link Road (Near Regent Plaza), Pune."
                 id="visit-heading"
               />
               <div className="visit__fact">
                 <span className="visit__fact-icon"><MapPin aria-hidden="true" /></span>
-                <span><small>LOCATION</small><strong>Baner–Pashan Link Road, Pune</strong></span>
+                <span>
+                  <small>CLINIC ADDRESS</small>
+                  <strong>402, 18 High Street, Baner–Pashan Link Road</strong>
+                  <span className="text-xs text-muted-foreground">Landmark: Near Regent Plaza, Pune</span>
+                </span>
               </div>
               <div className="visit__fact">
                 <span className="visit__fact-icon"><Phone aria-hidden="true" /></span>
@@ -436,7 +440,12 @@ function HomePage() {
               </div>
               <div className="visit__fact">
                 <span className="visit__fact-icon"><Clock3 aria-hidden="true" /></span>
-                <span><small>CONSULTATION HOURS</small><strong>Operating hours to be updated</strong></span>
+                <span>
+                  <small>CONSULTATION HOURS</small>
+                  <strong>Mon – Fri: 11:00 AM – 07:00 PM</strong>
+                  <strong>Sat: 09:00 AM – 05:00 PM</strong>
+                  <span className="text-xs text-muted-foreground">Sunday: Closed</span>
+                </span>
               </div>
               <div className="visit__actions">
                 <Button variant="cta" size="lg" disabled title="Appointment booking to be enabled">
@@ -445,7 +454,31 @@ function HomePage() {
                 <span>Online appointment scheduling will be available shortly.</span>
               </div>
             </div>
-            <PhotoPlaceholder label="Clinic location map & directions" className="visit__map" variant="soft" />
+            <div className="visit__map-card">
+              <div className="visit__map-content">
+                <MapPin className="visit__map-pin" aria-hidden="true" />
+                <h3>Dr. Mehta’s Dental Care &amp; Cure</h3>
+                <p>
+                  402, 18 High Street, Baner–Pashan Link Road,<br />
+                  Near Regent Plaza, Pune
+                </p>
+                <div className="visit__map-timings">
+                  <div><span>Mon – Fri</span> <span>11:00 AM – 07:00 PM</span></div>
+                  <div><span>Saturday</span> <span>09:00 AM – 05:00 PM</span></div>
+                  <div><span>Sunday</span> <span>Closed</span></div>
+                </div>
+                <Button asChild variant="outline" size="sm" className="mt-2">
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=18+High+Street+Baner+Pashan+Link+Road+Pune"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MapPin aria-hidden="true" /> View on Google Maps
+                  </a>
+                </Button>
+              </div>
+              <span className="photo-placeholder__corner" aria-hidden="true" />
+            </div>
           </div>
         </section>
       </main>
@@ -463,7 +496,7 @@ function HomePage() {
         </div>
         <div className="site-footer__bottom">
           <span>© Dr. Mehta’s Dental Care &amp; Cure</span>
-          <span>Baner–Pashan Link Road, Pune</span>
+          <span>402, 18 High Street, Baner–Pashan Link Road, Pune</span>
           <a href="#home">Back to top <ChevronDown aria-hidden="true" /></a>
         </div>
       </footer>
